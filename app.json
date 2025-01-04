@@ -4,7 +4,10 @@
     "pages/student/index",
     "pages/admin/index",
     "pages/admin/student-manage/index",
-    "pages/admin/student-manage/edit"
+    "pages/admin/student-manage/edit",
+    "pages/admin/announcement-manage/index",
+    "pages/admin/announcement-manage/edit",
+    "pages/admin/announcement-manage/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,0 +1,87 @@
+.container {
+    padding: 20px;
+}
+
+.action-bar {
+    margin-bottom: 20px;
+}
+
+.add-btn {
+    background: #007aff;
+    color: white;
+    border-radius: 8px;
+}
+
+.announcement-list {
+    margin-bottom: 20px;
+}
+
+.announcement-item {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.announcement-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.announcement-title {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.announcement-time {
+    font-size: 12px;
+    color: #999;
+}
+
+.announcement-content {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.announcement-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.comment-count {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    color: #666;
+}
+
+.comment-count .icon {
+    margin-right: 5px;
+}
+
+.announcement-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.action-btn {
+    min-width: 60px;
+}
+
+.action-btn.edit {
+    background: #007aff;
+    color: white;
+}
+
+.action-btn.delete {
+    background: #ff3b30;
+    color: white;
+} 

@@ -13,5 +13,14 @@
       </view>
       <text class="function-arrow">></text>
     </view>
+
+    <view class="function-item" bindtap="navigateToAnnouncementManage">
+      <view class="function-icon">📢</view>
+      <view class="function-info">
+        <text class="function-title">公告管理</text>
+        <text class="function-desc">发布和管理公告</text>
+      </view>
+      <text class="function-arrow">></text>
+    </view>
   </view>
 </view> 

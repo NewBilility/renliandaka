@@ -1,0 +1,31 @@
+<view class="container">
+    <view class="form-group">
+        <view class="form-item">
+            <text class="form-label">公告标题</text>
+            <input 
+                class="form-input" 
+                value="{{announcement.title}}"
+                placeholder="请输入公告标题"
+                data-field="title"
+                bindinput="handleInput"
+            />
+        </view>
+
+        <view class="form-item">
+            <text class="form-label">公告内容</text>
+            <textarea 
+                class="form-textarea" 
+                value="{{announcement.content}}"
+                placeholder="请输入公告内容"
+                data-field="content"
+                bindinput="handleInput"
+            />
+        </view>
+    </view>
+
+    <view class="form-actions">
+        <button class="submit-btn" bindtap="handleSubmit">
+            {{isEdit ? '保存修改' : '发布公告'}}
+        </button>
+    </view>
+</view> 

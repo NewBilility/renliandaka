@@ -1,0 +1,38 @@
+<view class="container">
+    <view class="action-bar">
+        <button class="add-btn" bindtap="handleAddAnnouncement">发布公告</button>
+    </view>
+
+    <view class="announcement-list">
+        <view class="announcement-item" wx:for="{{announcements}}" wx:key="id">
+            <view class="announcement-header">
+                <text class="announcement-title">{{item.title}}</text>
+                <text class="announcement-time">{{item.createTime}}</text>
+            </view>
+            
+            <view class="announcement-content">{{item.content}}</view>
+            
+            <view class="announcement-footer">
+                <view class="comment-count" bindtap="handleViewDetail" data-id="{{item.id}}">
+                    <text class="icon">💬</text>
+                    <text>{{item.comments.length}}条评论</text>
+                </view>
+                
+                <view class="announcement-actions">
+                    <button 
+                        class="action-btn edit" 
+                        size="mini" 
+                        data-id="{{item.id}}"
+                        bindtap="handleEditAnnouncement"
+                    >编辑</button>
+                    <button 
+                        class="action-btn delete" 
+                        size="mini" 
+                        data-id="{{item.id}}"
+                        bindtap="handleDeleteAnnouncement"
+                    >删除</button>
+                </view>
+            </view>
+        </view>
+    </view>
+</view> 

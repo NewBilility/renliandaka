@@ -39,6 +39,8 @@
 
 .input-group {
   margin-bottom: 30px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .input-item {
@@ -49,6 +51,7 @@
   border: 1px solid #eee;
   border-radius: 8px;
   font-size: 14px;
+  box-sizing: border-box;
 }
 
 .login-btn {
@@ -59,6 +62,7 @@
   color: white;
   border-radius: 8px;
   font-size: 16px;
+  box-sizing: border-box;
 }
 
 .login-btn:active {
