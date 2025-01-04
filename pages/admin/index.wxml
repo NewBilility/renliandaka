@@ -1,7 +1,6 @@
 <view class="container">
   <view class="admin-info">
-    <text class="title">{{adminInfo.name}}</text>
-    <text class="subtitle">{{adminInfo.department}}</text>
+    <text class="welcome">欢迎，{{adminInfo.name}}</text>
   </view>
 
   <view class="function-list">

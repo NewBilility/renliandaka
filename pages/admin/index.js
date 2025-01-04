@@ -1,13 +1,7 @@
 Page({
     data: {
         adminInfo: {
-            name: '管理员',
-            department: '教务处'
-        },
-        statistics: {
-            totalStudents: 1200,
-            totalCourses: 48,
-            activeUsers: 856
+            name: '张老师'
         }
     },
 
