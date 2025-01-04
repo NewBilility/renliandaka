@@ -1,0 +1,24 @@
+.container {
+  padding: 20px;
+}
+
+.welcome {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 5px;
+  display: block;
+} 

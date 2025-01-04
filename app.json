@@ -1,0 +1,15 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/student/index",
+    "pages/admin/index",
+    "pages/admin/student-manage/index",
+    "pages/admin/student-manage/edit"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "校园管理系统",
+    "navigationBarTextStyle": "black"
+  }
+}

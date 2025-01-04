@@ -1,0 +1,17 @@
+<view class="container">
+  <view class="admin-info">
+    <text class="title">{{adminInfo.name}}</text>
+    <text class="subtitle">{{adminInfo.department}}</text>
+  </view>
+
+  <view class="function-list">
+    <view class="function-item" bindtap="navigateToStudentManage">
+      <view class="function-icon">👥</view>
+      <view class="function-info">
+        <text class="function-title">学生管理</text>
+        <text class="function-desc">管理学生信息</text>
+      </view>
+      <text class="function-arrow">></text>
+    </view>
+  </view>
+</view> 

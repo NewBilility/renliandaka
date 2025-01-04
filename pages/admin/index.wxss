@@ -1,0 +1,89 @@
+.container {
+  padding: 20px;
+}
+
+.admin-info {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #666;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.stats-item {
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.stats-num {
+  font-size: 24px;
+  font-weight: 500;
+  color: #007aff;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.stats-label {
+  font-size: 12px;
+  color: #666;
+}
+
+.function-list {
+  margin-top: 20px;
+}
+
+.function-item {
+  display: flex;
+  align-items: center;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.function-icon {
+  font-size: 24px;
+  margin-right: 15px;
+}
+
+.function-info {
+  flex: 1;
+}
+
+.function-title {
+  font-size: 16px;
+  font-weight: 500;
+  display: block;
+}
+
+.function-desc {
+  font-size: 12px;
+  color: #666;
+}
+
+.function-arrow {
+  color: #999;
+  font-size: 18px;
+} 

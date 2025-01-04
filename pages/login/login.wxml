@@ -1,0 +1,34 @@
+<view class="container">
+  <view class="login-box">
+    <view class="role-switch">
+      <view 
+        class="role-item {{role === 'student' ? 'active' : ''}}" 
+        bindtap="switchRole" 
+        data-role="student">学生</view>
+      <view 
+        class="role-item {{role === 'admin' ? 'active' : ''}}" 
+        bindtap="switchRole" 
+        data-role="admin">管理员</view>
+    </view>
+
+    <view class="input-group">
+      <input 
+        class="input-item" 
+        placeholder="请输入用户ID" 
+        value="{{userId}}"
+        data-field="userId"
+        bindinput="inputChange"
+      />
+      <input 
+        class="input-item" 
+        placeholder="请输入密码" 
+        password 
+        value="{{password}}"
+        data-field="password"
+        bindinput="inputChange"
+      />
+    </view>
+
+    <button class="login-btn" bindtap="handleLogin">登录</button>
+  </view>
+</view> 

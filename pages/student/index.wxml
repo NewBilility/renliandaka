@@ -1,0 +1,7 @@
+<view class="container">
+  <view class="welcome">
+    <text class="title">欢迎回来，{{studentInfo.name}}</text>
+    <text class="subtitle">学号：{{studentInfo.id}}</text>
+    <text class="subtitle">班级：{{studentInfo.class}}</text>
+  </view>
+</view> 

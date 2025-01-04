@@ -1,0 +1,81 @@
+<view class="container">
+    <view class="form-group">
+        <view class="avatar-section" bindtap="chooseAvatar">
+            <image class="avatar" src="{{studentInfo.avatar}}" mode="aspectFill"/>
+            <text class="avatar-tip">点击更换头像</text>
+        </view>
+
+        <view class="form-item">
+            <text class="form-label">学号</text>
+            <input 
+                class="form-input" 
+                value="{{studentInfo.id}}"
+                placeholder="请输入学号"
+                data-field="id"
+                bindinput="handleInput"
+            />
+        </view>
+
+        <view class="form-item">
+            <text class="form-label">姓名</text>
+            <input 
+                class="form-input" 
+                value="{{studentInfo.name}}"
+                placeholder="请输入姓名"
+                data-field="name"
+                bindinput="handleInput"
+            />
+        </view>
+
+        <view class="form-item">
+            <text class="form-label">班级</text>
+            <input 
+                class="form-input" 
+                value="{{studentInfo.class}}"
+                placeholder="请输入班级"
+                data-field="class"
+                bindinput="handleInput"
+            />
+        </view>
+
+        <view class="form-item">
+            <text class="form-label">专业</text>
+            <input 
+                class="form-input" 
+                value="{{studentInfo.major}}"
+                placeholder="请输入专业"
+                data-field="major"
+                bindinput="handleInput"
+            />
+        </view>
+
+        <view class="form-item">
+            <text class="form-label">学院</text>
+            <input 
+                class="form-input" 
+                value="{{studentInfo.college}}"
+                placeholder="请输入学院"
+                data-field="college"
+                bindinput="handleInput"
+            />
+        </view>
+
+        <view class="form-item">
+            <text class="form-label">密码</text>
+            <input 
+                class="form-input" 
+                value="{{studentInfo.password}}"
+                placeholder="请输入密码"
+                password
+                data-field="password"
+                bindinput="handleInput"
+            />
+        </view>
+    </view>
+
+    <view class="form-actions">
+        <button class="submit-btn" bindtap="handleSubmit">
+            {{isEdit ? '保存修改' : '添加学生'}}
+        </button>
+    </view>
+</view> 
