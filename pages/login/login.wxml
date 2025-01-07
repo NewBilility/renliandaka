@@ -18,6 +18,7 @@
         value="{{userId}}"
         data-field="userId"
         bindinput="inputChange"
+        type="text"
       />
       <input 
         class="input-item" 
@@ -26,6 +27,7 @@
         value="{{password}}"
         data-field="password"
         bindinput="inputChange"
+        type="text"
       />
     </view>
 
