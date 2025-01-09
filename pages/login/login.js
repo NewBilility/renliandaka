@@ -1,3 +1,5 @@
+import { BASE_URL } from '../../config/api'
+
 Page({
     data: {
         role: 'student', // 默认选中学生角色
@@ -37,7 +39,7 @@ Page({
             try {
                 const res = await new Promise((resolve, reject) => {
                     wx.request({
-                        url: 'http://192.168.3.43:5001/admin/login',
+                        url: `${BASE_URL}/admin/login`,
                         method: 'POST',
                         data: {
                             userid: userId,

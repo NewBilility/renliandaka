@@ -1,19 +1,28 @@
 <view class="container">
     <view class="form-group">
         <view class="avatar-section" bindtap="chooseAvatar">
-            <image class="avatar" src="{{studentInfo.avatar}}" mode="aspectFill"/>
-            <text class="avatar-tip">点击更换头像</text>
+            <image 
+                class="avatar" 
+                src="{{tempFilePath || '/static/images/default-avatar.png'}}"
+                mode="aspectFill"
+            />
+            <text class="avatar-tip">{{tempFilePath ? '点击更换头像' : '点击选择头像'}}</text>
         </view>
 
         <view class="form-item">
             <text class="form-label">学号</text>
-            <input 
-                class="form-input" 
-                value="{{studentInfo.id}}"
-                placeholder="请输入学号"
-                data-field="id"
-                bindinput="handleInput"
-            />
+            <block wx:if="{{isEdit}}">
+                <text class="value">{{studentInfo.student_id}}</text>
+            </block>
+            <block wx:else>
+                <input 
+                    class="form-input" 
+                    value="{{studentInfo.student_id}}"
+                    placeholder="请输入学号"
+                    data-field="student_id"
+                    bindinput="handleInput"
+                />
+            </block>
         </view>
 
         <view class="form-item">
@@ -31,9 +40,9 @@
             <text class="form-label">班级</text>
             <input 
                 class="form-input" 
-                value="{{studentInfo.class}}"
+                value="{{studentInfo.class_name}}"
                 placeholder="请输入班级"
-                data-field="class"
+                data-field="class_name"
                 bindinput="handleInput"
             />
         </view>

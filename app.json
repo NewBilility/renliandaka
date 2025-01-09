@@ -7,7 +7,8 @@
     "pages/admin/student-manage/edit",
     "pages/admin/announcement-manage/index",
     "pages/admin/announcement-manage/edit",
-    "pages/admin/announcement-manage/detail"
+    "pages/admin/announcement-manage/detail",
+    "pages/admin/admin-info/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

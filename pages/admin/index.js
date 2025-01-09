@@ -33,5 +33,11 @@ Page({
         wx.navigateTo({
             url: '/pages/admin/announcement-manage/index'
         })
+    },
+
+    navigateToAdminInfo() {
+        wx.navigateTo({
+            url: '/pages/admin/admin-info/index'
+        })
     }
 }) 

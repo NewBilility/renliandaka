@@ -1,0 +1,108 @@
+<view class="container">
+    <view wx:if="{{loading}}" class="loading">加载中...</view>
+    <view wx:else class="admin-detail">
+        <view class="section">
+            <view class="section-title">基本信息</view>
+            <view class="info-item">
+                <text class="label">用户名</text>
+                <input 
+                    class="input-value" 
+                    value="{{adminInfo.username}}"
+                    data-field="username"
+                    bindinput="handleInput"
+                />
+            </view>
+            <view class="info-item">
+                <text class="label">用户ID</text>
+                <text class="value">{{adminInfo.userid}}</text>
+            </view>
+            <view class="info-item">
+                <text class="label">联系方式</text>
+                <input 
+                    class="input-value" 
+                    value="{{adminInfo.contact}}"
+                    data-field="contact"
+                    bindinput="handleInput"
+                />
+            </view>
+            <view class="info-item">
+                <text class="label">新密码</text>
+                <input 
+                    class="input-value" 
+                    value="{{newPassword}}"
+                    password
+                    placeholder="不修改请留空"
+                    data-field="newPassword"
+                    bindinput="handleInput"
+                />
+            </view>
+            <view class="info-item">
+                <text class="label">创建时间</text>
+                <text class="value">{{adminInfo.create_time}}</text>
+            </view>
+            <view class="info-item">
+                <text class="label">更新时间</text>
+                <text class="value">{{adminInfo.update_time}}</text>
+            </view>
+        </view>
+
+        <view class="section">
+            <view class="section-header">
+                <text class="section-title">管理区域</text>
+                <button class="add-area-btn" bindtap="handleAddArea">添加区域</button>
+            </view>
+            <view class="area-list">
+                <view class="area-item" wx:for="{{adminInfo.areas}}" wx:key="id" wx:for-index="areaIndex">
+                    <view class="area-header">
+                        <input 
+                            class="input-area-name" 
+                            value="{{item.name}}"
+                            data-field="name"
+                            data-index="{{areaIndex}}"
+                            bindinput="handleAreaInput"
+                        />
+                        <button 
+                            class="delete-area-btn" 
+                            size="mini" 
+                            data-index="{{areaIndex}}"
+                            bindtap="handleDeleteArea"
+                        >删除</button>
+                    </view>
+                    <textarea 
+                        class="input-area-desc" 
+                        value="{{item.description}}"
+                        data-field="description"
+                        data-index="{{areaIndex}}"
+                        bindinput="handleAreaInput"
+                    />
+                    <view class="area-location">
+                        <view class="location-item">
+                            <text class="location-label">经度：</text>
+                            <input 
+                                class="input-location" 
+                                value="{{item.longitude}}"
+                                type="digit"
+                                data-field="longitude"
+                                data-index="{{areaIndex}}"
+                                bindinput="handleAreaInput"
+                            />
+                        </view>
+                        <view class="location-item">
+                            <text class="location-label">纬度：</text>
+                            <input 
+                                class="input-location" 
+                                value="{{item.latitude}}"
+                                type="digit"
+                                data-field="latitude"
+                                data-index="{{areaIndex}}"
+                                bindinput="handleAreaInput"
+                            />
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+        <button class="save-btn" bindtap="handleSave">保存修改</button>
+    </view>
+</view> 

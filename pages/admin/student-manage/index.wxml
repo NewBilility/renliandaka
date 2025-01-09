@@ -13,31 +13,31 @@
     <button class="add-btn" bindtap="handleAddStudent">添加学生</button>
   </view>
 
-  <view class="student-list">
+  <view wx:if="{{loading}}" class="loading">加载中...</view>
+  <view wx:else class="student-list">
     <view class="student-item" wx:for="{{studentList}}" wx:key="id">
-      <image class="student-avatar" src="{{item.avatar}}" mode="aspectFill"/>
       <view class="student-info">
         <view class="student-main">
           <text class="student-name">{{item.name}}</text>
-          <text class="student-id">学号：{{item.id}}</text>
+          <text class="student-id">学号：{{item.student_id}}</text>
         </view>
         <view class="student-sub">
-          <text class="student-class">{{item.class}}</text>
+          <text class="student-class">{{item.class_name}}</text>
           <text class="student-major">{{item.major}}</text>
-          <text class="student-college">{{item.college}}</text>
         </view>
       </view>
       <view class="student-actions">
         <button 
           class="action-btn edit" 
           size="mini" 
-          data-id="{{item.id}}"
+          data-studentid="{{item.student_id}}"
           bindtap="handleEditStudent"
         >编辑</button>
         <button 
           class="action-btn delete" 
           size="mini" 
-          data-id="{{item.id}}"
+          data-studentid="{{item.student_id}}"
+          data-info="{{item}}"
           bindtap="handleDeleteStudent"
         >删除</button>
       </view>
