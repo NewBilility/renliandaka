@@ -1,7 +1,35 @@
 <view class="container">
-  <view class="welcome">
-    <text class="title">欢迎回来，{{studentInfo.name}}</text>
-    <text class="subtitle">学号：{{studentInfo.id}}</text>
-    <text class="subtitle">班级：{{studentInfo.class}}</text>
-  </view>
+    <view class="welcome-section">
+        <text class="welcome-text">你好，欢迎{{studentInfo.name}}同学</text>
+        <text class="student-info">{{studentInfo.class_name}} | {{studentInfo.major}}</text>
+    </view>
+
+    <view class="function-list">
+        <view class="function-item" bindtap="navigateToAnnouncements">
+            <view class="function-icon">📢</view>
+            <view class="function-info">
+                <text class="function-title">公告信息</text>
+                <text class="function-desc">查看学校公告</text>
+            </view>
+            <text class="function-arrow">></text>
+        </view>
+
+        <view class="function-item" bindtap="navigateToCheckin">
+            <view class="function-icon">📝</view>
+            <view class="function-info">
+                <text class="function-title">个人打卡</text>
+                <text class="function-desc">进行每日打卡</text>
+            </view>
+            <text class="function-arrow">></text>
+        </view>
+
+        <view class="function-item" bindtap="navigateToProfile">
+            <view class="function-icon">👤</view>
+            <view class="function-info">
+                <text class="function-title">我的信息</text>
+                <text class="function-desc">查看个人信息</text>
+            </view>
+            <text class="function-arrow">></text>
+        </view>
+    </view>
 </view> 

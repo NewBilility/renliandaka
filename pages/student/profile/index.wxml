@@ -1,0 +1,50 @@
+<view class="container">
+    <view class="profile-card">
+        <!-- 头像部分 -->
+        <view class="avatar-section" bindtap="chooseAvatar">
+            <image 
+                class="avatar" 
+                src="{{avatarUrl}}" 
+                mode="aspectFill"
+            />
+            <text class="avatar-tip">点击更换头像</text>
+        </view>
+
+        <!-- 个人信息部分 -->
+        <view class="info-section">
+            <view class="info-item">
+                <text class="label">学号</text>
+                <text class="value">{{studentInfo.student_id}}</text>
+            </view>
+            <view class="info-item">
+                <text class="label">姓名</text>
+                <text class="value">{{studentInfo.name}}</text>
+            </view>
+            <view class="info-item">
+                <text class="label">班级</text>
+                <text class="value">{{studentInfo.class_name}}</text>
+            </view>
+            <view class="info-item">
+                <text class="label">学院</text>
+                <text class="value">{{studentInfo.college}}</text>
+            </view>
+            <view class="info-item">
+                <text class="label">专业</text>
+                <text class="value">{{studentInfo.major}}</text>
+            </view>
+        </view>
+
+        <!-- 修改密码部分 -->
+        <view class="password-section">
+            <text class="section-title">修改密码</text>
+            <input 
+                class="password-input" 
+                type="password" 
+                placeholder="请输入新密码" 
+                value="{{newPassword}}"
+                bindinput="handlePasswordInput"
+            />
+            <button class="update-btn" bindtap="handleUpdatePassword">确认修改</button>
+        </view>
+    </view>
+</view> 

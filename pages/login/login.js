@@ -85,11 +85,58 @@ Page({
                 })
             }
         } else {
-            // TODO: 学生登录逻辑
-            wx.showToast({
-                title: '学生登录功能待实现',
-                icon: 'none'
-            })
+            try {
+                const res = await new Promise((resolve, reject) => {
+                    wx.request({
+                        url: `${BASE_URL}/student/login`,
+                        method: 'POST',
+                        data: {
+                            student_id: userId,
+                            password: password
+                        },
+                        success: resolve,
+                        fail: reject
+                    })
+                })
+
+                if (res.data.code === 200) {
+                    // 保存学生登录信息
+                    wx.setStorageSync('token', res.data.data.token)
+                    wx.setStorageSync('session_id', res.data.data.session_id)
+                    wx.setStorageSync('expire_time', res.data.data.expire_time)
+                    wx.setStorageSync('studentInfo', {
+                        name: res.data.data.name,
+                        student_id: res.data.data.student_id,
+                        class_name: res.data.data.class_name,
+                        major: res.data.data.major,
+                        college: res.data.data.college,
+                        avatar_path: res.data.data.avatar_path
+                    })
+
+                    wx.showToast({
+                        title: '登录成功',
+                        icon: 'success',
+                        duration: 1500,
+                        success: () => {
+                            setTimeout(() => {
+                                wx.redirectTo({
+                                    url: '/pages/student/index'
+                                })
+                            }, 1500)
+                        }
+                    })
+                } else {
+                    wx.showToast({
+                        title: res.data.message || '登录失败',
+                        icon: 'none'
+                    })
+                }
+            } catch (error) {
+                wx.showToast({
+                    title: '网络错误',
+                    icon: 'none'
+                })
+            }
         }
     }
 }) 
