@@ -22,6 +22,15 @@
     border-radius: 12px;
     margin-bottom: 15px;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.announcement-item:active {
+    opacity: 0.8;
+}
+
+.announcement-content-wrap {
+    width: 100%;
 }
 
 .announcement-header {
@@ -59,21 +68,28 @@
 .comment-count {
     display: flex;
     align-items: center;
-    font-size: 12px;
+    font-size: 11px;
     color: #666;
+    margin-right: 8px;
 }
 
 .comment-count .icon {
-    margin-right: 5px;
+    margin-right: 4px;
+    font-size: 12px;
 }
 
 .announcement-actions {
     display: flex;
-    gap: 10px;
+    gap: 6px;
+    align-items: center;
 }
 
 .action-btn {
-    min-width: 60px;
+    min-width: 45px;
+    padding: 0 6px;
+    font-size: 11px;
+    line-height: 1.6;
+    margin: 0 !important;
 }
 
 .action-btn.edit {

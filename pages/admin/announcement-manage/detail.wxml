@@ -1,53 +1,87 @@
 <view class="container">
-    <view class="announcement-detail">
-        <view class="announcement-header">
-            <text class="announcement-title">{{announcement.title}}</text>
-            <text class="announcement-time">{{announcement.createTime}}</text>
-        </view>
-        <view class="announcement-content">{{announcement.content}}</view>
-    </view>
-
-    <view class="comments-section">
-        <view class="section-title">评论列表</view>
-        <view class="comment-list">
-            <view class="comment-item" wx:for="{{announcement.comments}}" wx:key="id">
-                <view class="comment-header">
-                    <text class="comment-author">{{item.studentName}}</text>
-                    <text class="comment-time">{{item.createTime}}</text>
-                </view>
-                <view class="comment-content">{{item.content}}</view>
-                
-                <view class="reply-section" wx:if="{{item.reply}}">
-                    <view class="reply-content">
-                        <text class="reply-label">管理员回复：</text>
-                        <text>{{item.reply}}</text>
-                    </view>
-                </view>
-                
-                <view class="reply-section" wx:else>
-                    <view class="reply-actions">
-                        <button 
-                            class="reply-btn" 
-                            size="mini" 
-                            data-id="{{item.id}}"
-                            bindtap="showReplyInput"
-                        >回复</button>
-                    </view>
-                    <view class="reply-input-section" wx:if="{{currentCommentId === item.id}}">
-                        <input 
-                            class="reply-input"
-                            placeholder="请输入回复内容"
-                            value="{{replyContent}}"
-                            bindinput="handleReplyInput"
-                        />
-                        <button 
-                            class="submit-reply-btn" 
-                            size="mini"
-                            bindtap="handleSubmitReply"
-                        >提交</button>
-                    </view>
+    <view wx:if="{{loading}}" class="loading">加载中...</view>
+    <block wx:else>
+        <view class="announcement-detail">
+            <view class="announcement-header">
+                <text class="announcement-title">{{announcement.title}}</text>
+                <view class="announcement-info">
+                    <text class="admin-name">发布人：{{announcement.admin_name}}</text>
+                    <text class="time">发布时间：{{announcement.create_time}}</text>
+                    <text class="time" wx:if="{{announcement.update_time !== announcement.create_time}}">
+                        更新时间：{{announcement.update_time}}
+                    </text>
                 </view>
             </view>
+            <view class="announcement-content">{{announcement.content}}</view>
         </view>
-    </view>
+
+        <view class="comments-section">
+            <view class="section-title">评论区</view>
+            
+            <!-- 评论输入框 -->
+            <view class="comment-input-section">
+                <textarea 
+                    class="comment-input"
+                    placeholder="写下你的评论..."
+                    value="{{commentContent}}"
+                    bindinput="handleCommentInput"
+                    auto-height
+                />
+                <button class="submit-btn" bindtap="submitComment">发表评论</button>
+            </view>
+
+            <view class="comment-list">
+                <block wx:if="{{comments.length > 0}}">
+                    <view class="comment-item" wx:for="{{comments}}" wx:key="id">
+                        <view class="comment-main">
+                            <view class="comment-header">
+                                <text class="commenter-name">{{item.commenter.name}}</text>
+                                <text class="comment-time">{{item.create_time}}</text>
+                            </view>
+                            <view class="comment-content">{{item.content}}</view>
+                            
+                            <!-- 回复按钮 -->
+                            <view class="comment-actions">
+                                <text class="reply-btn" bindtap="showReplyInput" data-commentid="{{item.id}}">回复</text>
+                            </view>
+
+                            <!-- 回复输入框 -->
+                            <view class="reply-input-section" wx:if="{{replyToComment === item.id}}">
+                                <textarea 
+                                    class="reply-input"
+                                    placeholder="写下你的回复..."
+                                    value="{{replyContent}}"
+                                    bindinput="handleReplyInput"
+                                    auto-height
+                                />
+                                <view class="reply-actions">
+                                    <button class="cancel-btn" bindtap="cancelReply">取消</button>
+                                    <button class="submit-btn" bindtap="submitReply">回复</button>
+                                </view>
+                            </view>
+                            
+                            <!-- 回复列表 -->
+                            <view class="replies-section" wx:if="{{item.replies && item.replies.length > 0}}">
+                                <view class="replies-header" bindtap="toggleCommentReplies" data-commentid="{{item.id}}">
+                                    <text class="replies-count">{{item.replies.length}}条回复</text>
+                                    <text class="toggle-icon">{{expandedComments[item.id] ? '收起' : '展开'}}</text>
+                                </view>
+                                
+                                <view class="replies-list" wx:if="{{expandedComments[item.id]}}">
+                                    <view class="reply-item" wx:for="{{item.replies}}" wx:key="id" wx:for-item="reply">
+                                        <view class="reply-header">
+                                            <text class="replier-name">{{reply.commenter.name}}</text>
+                                            <text class="reply-time">{{reply.create_time}}</text>
+                                        </view>
+                                        <view class="reply-content">{{reply.content}}</view>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </block>
+                <view wx:else class="no-comments">暂无评论</view>
+            </view>
+        </view>
+    </block>
 </view> 

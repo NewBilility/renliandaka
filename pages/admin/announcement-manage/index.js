@@ -1,29 +1,48 @@
+import { BASE_URL } from '../../../config/api'
+
 Page({
     data: {
-        announcements: [
-            {
-                id: '1',
-                title: '关于期末考试安排的通知',
-                content: '各位同学：期末考试将于2024年1月15日开始...',
-                createTime: '2024-01-04 10:00',
-                comments: [
-                    {
-                        id: '1',
-                        studentName: '张三',
-                        content: '请问可以调整考试时间吗？',
-                        createTime: '2024-01-04 10:30',
-                        reply: '抱歉，考试时间已经确定，不能调整。'
-                    }
-                ]
-            },
-            {
-                id: '2',
-                title: '寒假放假通知',
-                content: '寒假将于2024年1月20日开始...',
-                createTime: '2024-01-03 14:00',
-                comments: []
+        announcements: [],
+        loading: true
+    },
+
+    onLoad() {
+        this.fetchAnnouncementList()
+    },
+
+    // 获取公告列表
+    async fetchAnnouncementList() {
+        try {
+            const adminInfo = wx.getStorageSync('adminInfo')
+            const res = await new Promise((resolve, reject) => {
+                wx.request({
+                    url: `${BASE_URL}/notice/list`,
+                    method: 'GET',
+                    data: {
+                        admin_userid: adminInfo.userid
+                    },
+                    success: resolve,
+                    fail: reject
+                })
+            })
+
+            if (res.data.code === 200) {
+                this.setData({
+                    announcements: res.data.data,
+                    loading: false
+                })
+            } else {
+                wx.showToast({
+                    title: res.data.message || '获取公告列表失败',
+                    icon: 'none'
+                })
             }
-        ]
+        } catch (error) {
+            wx.showToast({
+                title: '网络错误',
+                icon: 'none'
+            })
+        }
     },
 
     // 添加公告
@@ -47,16 +66,56 @@ Page({
         wx.showModal({
             title: '确认删除',
             content: '确定要删除该公告吗？',
-            success: (res) => {
+            success: async (res) => {
                 if (res.confirm) {
-                    // TODO: 调用删除API
-                    wx.showToast({
-                        title: '删除成功',
-                        icon: 'success'
-                    })
+                    try {
+                        wx.showLoading({
+                            title: '删除中...'
+                        })
+
+                        const adminInfo = wx.getStorageSync('adminInfo')
+                        const res = await new Promise((resolve, reject) => {
+                            wx.request({
+                                url: `${BASE_URL}/notice/delete/${id}`,
+                                method: 'DELETE',
+                                data: {
+                                    admin_userid: adminInfo.userid
+                                },
+                                success: resolve,
+                                fail: reject
+                            })
+                        })
+
+                        wx.hideLoading()
+
+                        if (res.data.code === 200) {
+                            wx.showToast({
+                                title: '删除成功',
+                                icon: 'success'
+                            })
+                            // 重新获取公告列表
+                            this.fetchAnnouncementList()
+                        } else {
+                            wx.showToast({
+                                title: res.data.message || '删除失败',
+                                icon: 'none'
+                            })
+                        }
+                    } catch (error) {
+                        wx.hideLoading()
+                        wx.showToast({
+                            title: '网络错误',
+                            icon: 'none'
+                        })
+                    }
                 }
             }
         })
+    },
+
+    // 阻止事件冒泡
+    stopPropagation(e) {
+        e.stopPropagation()
     },
 
     // 查看公告详情
